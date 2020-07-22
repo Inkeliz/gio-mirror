@@ -2,6 +2,8 @@ module gioui.org/example
 
 go 1.13
 
+replace gioui.org => ../.
+
 require (
 	gioui.org v0.0.0-20201119103011-21ef492cc9df
 	github.com/go-gl/gl v0.0.0-20190320180904-bf2b1f2f34d7

@@ -19,9 +19,19 @@ import (
 	"gioui.org/font/gofont"
 )
 
+func AddFileMenu() {
+	app.Menu("File",
+		app.MenuItem{"New Window", "n", 1})
+	app.Menu("Edit",
+		app.MenuItem{"Cut", "x", 2},
+		app.MenuItem{"Copy", "c", 3},
+		app.MenuItem{"Paste", "v", 4},
+	)
+}
 func main() {
 	go func() {
 		w := app.NewWindow()
+		AddFileMenu()
 		if err := loop(w); err != nil {
 			log.Fatal(err)
 		}
@@ -46,6 +56,8 @@ func loop(w *app.Window) error {
 			l.Alignment = text.Middle
 			l.Layout(gtx)
 			e.Frame(gtx.Ops)
+		case system.MenuEvent:
+			log.Printf("MenuEvent: Tag: %d", e.Tag)
 		}
 	}
 }
